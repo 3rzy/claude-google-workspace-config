@@ -1,0 +1,31 @@
+Kategoria,Podkategoria,Opis
+Konfiguracja,Pliki konfiguracyjne,Główny plik konfiguracyjny Claude znajduje się w /Users/krzyk/Library/Application Support/Claude/claude_desktop_config.json
+Konfiguracja,Pliki konfiguracyjne,Plik accounts.json musi znajdować się w katalogu /Users/krzyk/.mcp/google-workspace-mcp/
+Konfiguracja,Struktura accounts.json,Prawidłowa struktura pliku accounts.json to {"accounts":[{"email":"krzyk.nick@gmail.com","category":"personal","description":"Konto osobiste"}]}
+Konfiguracja,Client ID i Secret,Dla Google Workspace MCP używany jest client_id: 173541273918-2nile945njb1uh7qe9f3m6is5i5b82ul.apps.googleusercontent.com
+Konfiguracja,Client ID i Secret,Dla Google Drive używany jest client_id: 173541273918-d9dk7cdd04u12kec4plikp8t4inljjod.apps.googleusercontent.com
+Konfiguracja,Katalogi,Katalog konfiguracyjny dla Google Workspace MCP: /Users/krzyk/.mcp/google-workspace-mcp/
+Konfiguracja,Katalogi,Katalog roboczy dla Google Workspace MCP: /Users/krzyk/Documents/workspace-mcp-files
+Konfiguracja,Katalogi,Katalog kredencjałów dla Google Drive: /Users/krzyk/.mcp/gdrive-creds
+Konfiguracja,Docker,Google Workspace MCP używa obrazu Docker: ghcr.io/aaronsb/google-workspace-mcp:latest
+Konfiguracja,Uwierzytelnianie,Tokeny uwierzytelniające mogą wygasać i wymagać ponownej autoryzacji
+Konfiguracja,Uwierzytelnianie,Po wygaśnięciu tokena konieczne jest przeprowadzenie procesu uwierzytelniania OAuth
+Funkcjonalność,Gmail,Możliwość przeglądania i wyszukiwania wiadomości email
+Funkcjonalność,Gmail,Możliwość wysyłania wiadomości email
+Funkcjonalność,Gmail,Dostęp do załączników i możliwość ich pobierania
+Funkcjonalność,Gmail,Zarządzanie etykietami i folderami
+Funkcjonalność,Google Drive,Przeglądanie i wyszukiwanie plików
+Funkcjonalność,Google Drive,Pobieranie zawartości plików
+Funkcjonalność,Google Drive,Przesyłanie nowych plików
+Funkcjonalność,Google Drive,Zarządzanie uprawnieniami dostępu
+Funkcjonalność,Google Calendar,Przeglądanie wydarzeń w kalendarzu
+Funkcjonalność,Google Calendar,Tworzenie nowych wydarzeń
+Funkcjonalność,Google Calendar,Modyfikowanie istniejących wydarzeń
+Funkcjonalność,Google Calendar,Usuwanie wydarzeń
+Rozwiązywanie problemów,Połączenie,Jeśli Claude nie może połączyć się z usługami Google, sprawdź logi w ~/Library/Logs/Claude/
+Rozwiązywanie problemów,Logi,Logi dla Google Workspace MCP znajdują się w ~/Library/Logs/Claude/mcp-server-google-workspace-mcp.log
+Rozwiązywanie problemów,Logi,Logi dla Google Drive znajdują się w ~/Library/Logs/Claude/mcp-server-gdrive.log
+Rozwiązywanie problemów,Autentykacja,Jeśli token wygaśnie, Claude poprosi o ponowną autoryzację poprzez link OAuth
+Rozwiązywanie problemów,Accounts.json,Gdy serwer nie może się uruchomić z powodu błędu "ACCOUNTS_PARSE_ERROR", należy naprawić plik accounts.json
+Rozwiązywanie problemów,Docker,Sprawdź czy Docker jest uruchomiony i czy obraz Google Workspace MCP jest dostępny
+Rozwiązywanie problemów,Katalogi,Upewnij się, że wszystkie wymagane katalogi istnieją i mają odpowiednie uprawnienia
