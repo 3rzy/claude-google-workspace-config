@@ -1,49 +1,105 @@
 # Konfiguracja Claude Desktop z Google Workspace
 
-To repozytorium zawiera pliki konfiguracyjne do połączenia Claude Desktop z usługami Google Workspace (Gmail, Google Drive, Calendar).
+To repozytorium zawiera pliki konfiguracyjne, skrypty automatyzacji i szczegółową dokumentację do połączenia Claude Desktop z usługami Google Workspace (Gmail, Google Drive, Calendar).
 
-## Pliki konfiguracyjne
+## Zawartość repozytorium
 
-- `claude_desktop_config.json` - główna konfiguracja Claude Desktop
-- `accounts.json` - konfiguracja kont Google Workspace
+- `/configs` - pliki konfiguracyjne
+- `/docs` - szczegółowa dokumentacja w formacie Markdown
+- `/scripts` - skrypty do automatyzacji konfiguracji
+- `/knowledge` - baza wiedzy w formie CSV i Markdown
 
-## Wymagane kroki konfiguracyjne
+## Szybki start
 
-1. Zainstaluj Claude Desktop
-2. Zainstaluj Docker (wymagany dla Google Workspace MCP)
-3. Stwórz projekt w Google Cloud Console i aktywuj wymagane API
-4. Pobierz identyfikatory OAuth (client_id i client_secret)
-5. Stwórz poniższe katalogi:
-   - `/Users/YOUR_USERNAME/.mcp/google-workspace-mcp/`
-   - `/Users/YOUR_USERNAME/Documents/workspace-mcp-files`
-6. Umieść plik `accounts.json` w katalogu `/Users/YOUR_USERNAME/.mcp/google-workspace-mcp/`
-7. Umieść zaktualizowany plik `claude_desktop_config.json` w `/Users/YOUR_USERNAME/Library/Application Support/Claude/`
-8. Uruchom ponownie Claude Desktop
-9. Przeprowadź autoryzację OAuth gdy Claude o to poprosi
+Aby skonfigurować Claude Desktop z Google Workspace:
+
+1. Sklonuj to repozytorium:
+   ```bash
+   git clone https://github.com/3rzy/claude-google-workspace-config.git
+   cd claude-google-workspace-config
+   ```
+
+2. Uruchom skrypt konfiguracyjny:
+   ```bash
+   chmod +x scripts/restore_config.sh
+   ./scripts/restore_config.sh your.email@gmail.com
+   ```
+
+3. Postępuj zgodnie z instrukcjami wyświetlanymi przez skrypt.
+
+4. Po zakończeniu konfiguracji uruchom ponownie Claude Desktop.
+
+## Szczegółowa dokumentacja
+
+- [Rozpoczęcie pracy](docs/getting-started.md) - przewodnik konfiguracji krok po kroku
+- [Integracja z Gmail](docs/gmail-integration.md) - jak korzystać z emaili w Claude
+- [Integracja z Google Drive](docs/drive-integration.md) - jak pracować z plikami w Claude
+- [Integracja z Google Calendar](docs/calendar-integration.md) - jak zarządzać kalendarzem w Claude
+- [Rozwiązywanie problemów](rozwiazywanie_problemow.md) - najczęstsze problemy i ich rozwiązania
+
+## Struktura katalogów
+
+Wymagana struktura katalogów dla Claude Desktop z Google Workspace:
+
+```
+/Users/YOUR_USERNAME/
+├── .mcp/
+│   ├── google-workspace-mcp/
+│   │   ├── accounts.json
+│   │   ├── client_secret.json (opcjonalnie)
+│   │   └── credentials/ (tworzony automatycznie)
+│   └── gdrive-creds/ (dla Google Drive)
+├── Documents/
+│   └── workspace-mcp-files/ (katalog roboczy dla plików)
+└── Library/
+    ├── Application Support/
+    │   └── Claude/
+    │       └── claude_desktop_config.json
+    └── Logs/
+        └── Claude/
+            ├── mcp-server-google-workspace-mcp.log
+            ├── mcp-server-gdrive.log
+            └── mcp.log
+```
+
+Szczegółowy opis struktury katalogów znajduje się w [struktura_katalogow.md](struktura_katalogow.md).
+
+## Skrypty automatyzacji
+
+Repozytorium zawiera następujące skrypty automatyzujące zarządzanie konfiguracją:
+
+- `scripts/restore_config.sh` - przywraca konfigurację Claude
+- `scripts/backup_config.sh` - tworzy kopię zapasową aktualnej konfiguracji
+- `scripts/validate_config.sh` - sprawdza poprawność konfiguracji
+
+## Wymagania
+
+- Claude Desktop
+- Docker
+- Node.js i NPM
+- Konto Google z włączonymi API (Gmail, Drive, Calendar)
+- Utworzony projekt w Google Cloud Console z identyfikatorami OAuth
 
 ## Rozwiązywanie problemów
 
-Sprawdź logi w katalogach:
-- `~/Library/Logs/Claude/mcp-server-google-workspace-mcp.log`
-- `~/Library/Logs/Claude/mcp-server-gdrive.log`
+W przypadku problemów:
 
-Jeśli występuje błąd "ACCOUNTS_PARSE_ERROR", sprawdź format pliku `accounts.json`.
+1. Uruchom skrypt walidacyjny: `./scripts/validate_config.sh`
+2. Sprawdź logi w katalogu `~/Library/Logs/Claude/`
+3. Zapoznaj się z [poradnikiem rozwiązywania problemów](rozwiazywanie_problemow.md)
 
-Prawidłowa struktura pliku `accounts.json`:
-```json
-{
-  "accounts": [
-    {
-      "email": "your.email@gmail.com",
-      "category": "personal",
-      "description": "Konto osobiste"
-    }
-  ]
-}
-```
+## Bezpieczeństwo
 
-## Uwaga
+**UWAGA**: Nigdy nie umieszczaj rzeczywistych kluczy API, client_id ani client_secret w publicznych repozytoriach!
 
-**Nigdy nie umieszczaj prawdziwych kluczy API, client_id ani client_secret w publicznych repozytoriach!**
+Pliki konfiguracyjne w tym repozytorium używają placeholderów zamiast rzeczywistych kluczy. Podczas konfiguracji skrypt poprosi o podanie rzeczywistych wartości.
 
-Przed udostępnieniem konfiguracji, zastąp wszystkie poufne dane oznaczeniami (np. YOUR_CLIENT_ID).
+## Licencja
+
+Ten projekt jest udostępniany na licencji MIT. Szczegóły znajdują się w pliku [LICENSE](LICENSE).
+
+## Podziękowania
+
+- Zespół Anthropic za Claude AI
+- Zespół Google za Google Workspace API
+- Autorzy serwera Google Workspace MCP
